@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import css from "./App.css"
+import MoviesData from "./MoviesData";
+import MovieCard from "./components/MovieCards";
+import Trailer from "./components/Trailer";
+
 
 function App() {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    async function fetchMovies() {
+      const data = await MoviesData();
+      setMovies(data.results);
+    }
+
+    fetchMovies();
+  }, []);
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Trailer/>
+      <div className="container">
+        <div className="row">
+          {movies.map((item) => (
+            <MovieCard key={item.id} title={item.title} poster={item.poster_path} date={item.release_date} popularity={item.popularity} id={item.id} />
+          ))}
+        </div>
+      </div>
+
+    </>
   );
 }
 

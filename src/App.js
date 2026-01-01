@@ -1,36 +1,20 @@
-import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Movies from "./pages/Movies";
+import MovPreview from "./pages/MovPreview";
+import Search from "./pages/Search";
 import css from "./App.css"
-import MoviesData from "./MoviesData";
-import MovieCard from "./components/MovieCards";
-import Trailer from "./components/Trailer";
-
 
 function App() {
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    async function fetchMovies() {
-      const data = await MoviesData();
-      setMovies(data.results);
-    }
-
-    fetchMovies();
-  }, []);
-
-
-
   return (
-    <>
-    <Trailer/>
-      <div className="container">
-        <div className="row">
-          {movies.map((item) => (
-            <MovieCard key={item.id} title={item.title} poster={item.poster_path} date={item.release_date} popularity={item.popularity} id={item.id} />
-          ))}
-        </div>
-      </div>
-
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Search" element={<Search/>} />
+        <Route path="/Movies" element={<Movies />} />
+        <Route path="/preview/:id" element={<MovPreview />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

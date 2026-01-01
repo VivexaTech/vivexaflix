@@ -1,0 +1,14 @@
+import { MovieProps } from "../components/MovieProps"
+import Header from "../components/Header"
+import Footer from "../components/Footer"
+export default function Movies() {
+    return (
+        <>
+            <Header />
+            <div className="movContainer">
+                <MovieProps />
+            </div>
+            <Footer />
+        </>
+    )
+}

@@ -1,34 +1,26 @@
-import { useEffect, useState } from "react";
-import { MovieTrailer } from "../MoviesData";
+
 
 export default function MovieCard({ title, poster, date, popularity, id }) {
     const popul = Math.round(popularity);
-    const [trailer, setTrailer] = useState([]);
-
-    useEffect(() => {
-        async function fetchTrailer() {
-            const vdata = await MovieTrailer(id);
-            setTrailer(vdata.results[0]);
-        }
-
-        fetchTrailer();
-    }, []);
-
     return (
-        <div className="col-md-3 col-sm-6 mb-4">
-            <div className="movie-card">
-                <img src={`https://image.tmdb.org/t/p/w500/${poster}`} alt={title} className="movie-img" />
-                <div className="movie-overlay">
-                    <div className="movie-info">
-                        <h5 className="movie-title">{title}</h5>
-                        <p className="movie-meta">{date} • Popularity • {popul}%</p>
-                        <div className="movie-actions">
-                            <a href={`https://www.youtube.com/watch?v=${trailer?.key}`}><button className="btn btn-play"><i className="fas fa-play"></i> Watch Now</button></a>
-                            <button className="btn btn-icon"><i className="fas fa-plus"></i></button>
+        <>
+            <div className="col-12 col-sm-6 col-lg-4 col-xl-3">
+                <div className="result-card">
+                    <img src={`https://image.tmdb.org/t/p/w500/${poster}`} alt={title} classNameName="movie-img" />
+                    <div className="result-body">
+                        <div className="d-flex justify-content-between align-items-start mb-2">
+                            <h6 className="mb-0 fw-bold">{title}</h6>
+                            <span className="badge bg-dark border border-secondary">4K</span>
+                        </div>
+                        <p className="small text-secondary mb-3">{date} • Popularity • {popul}%</p>
+                        <div className="d-grid">
+                            <a href={`https://www.youtube.com/watch?v=${id}`} className="btn btn-watch">
+                                <i className="bi bi-play-fill"></i> Watch Now
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }

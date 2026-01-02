@@ -5,7 +5,7 @@ import Slider from "../components/Slider"
 import SliderProps from "../components/SliderProps"
 
 
-export default function Home() {
+export default function Home() { 
     return (
         <>
             <Header />

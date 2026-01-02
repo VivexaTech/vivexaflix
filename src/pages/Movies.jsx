@@ -5,9 +5,7 @@ export default function Movies() {
     return (
         <>
             <Header />
-            <div className="movContainer">
                 <MovieProps />
-            </div>
             <Footer />
         </>
     )

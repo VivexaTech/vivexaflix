@@ -12,6 +12,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Search" element={<Search/>} />
         <Route path="/Movies" element={<Movies />} />
+        <Route path="/Movies/:gtype" element={<Movies />} />
+        <Route path="/action" element={<Movies />} />
         <Route path="/preview/:id" element={<MovPreview />} />
       </Routes>
     </BrowserRouter>

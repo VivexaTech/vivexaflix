@@ -40,7 +40,7 @@ export default function Header() {
             </NavLink>
 
             <NavLink
-                to="/sports"
+                to="/action"
                 className={({ isActive }) =>
                     `sidebar-item ${isActive ? "active" : ""}`
                 }
@@ -59,7 +59,7 @@ export default function Header() {
                 <span>Search</span>
             </NavLink>
 
-            <NavLink
+            {/* <NavLink
                 to="/profile"
                 className={({ isActive }) =>
                     `sidebar-item mt-lg-auto mb-lg-4 ${isActive ? "active" : ""}`
@@ -67,7 +67,7 @@ export default function Header() {
             >
                 <i className="bi bi-person"></i>
                 <span>Profile</span>
-            </NavLink>
+            </NavLink> */}
         </nav>
     );
 }

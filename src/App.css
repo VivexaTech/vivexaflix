@@ -297,29 +297,63 @@ footer {
 
 /* Result Cards */
 .result-card {
+    position: relative;
+    /* Details ko contain karne ke liye */
     background: rgba(255, 255, 255, 0.02);
     border-radius: 20px;
     overflow: hidden;
     border: 1px solid var(--glass-border);
     transition: 0.4s cubic-bezier(.2, .8, .2, 1);
     height: 100%;
+    cursor: pointer;
+}
+
+.movie-img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    display: block;
+    transition: 0.5s ease;
+    /* Image zoom effect ke liye */
+}
+
+/* 1. Body ko image ke upar overlay banaya */
+.result-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 20%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    /* Puri image cover karne ke liye */
+
+    /* 2. Shuruat mein hide karne ke liye */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+/* 3. Hover Effect */
+.result-card:hover .result-body {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.result-card:hover .movie-img {
+    transform: scale(1.1);
+    /* Hover par image thodi zoom hogi */
 }
 
 .result-card:hover {
-    transform: translateY(-10px);
     border-color: var(--neon-purple);
-    box-shadow: 0 20px 40px rgba(191, 90, 242, 0.15);
+    box-shadow: 0 20px 40px rgba(191, 90, 242, 0.2);
 }
 
-.result-img {
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-}
-
-.result-body {
-    padding: 18px;
-}
+/* Baki btn-watch wahi rahega jo aapne likha hai */
 
 /* WATCH NOW BUTTON - PREMIUM GRADIENT */
 .btn-watch {
@@ -374,3 +408,143 @@ footer {
         font-size: 0.95rem;
     }
 }
+
+/* Image class ko update karein */
+
+
+/* Card ki height fix na karein taaki content ke hisaab se adjust ho */
+.filter-container {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    scrollbar-width: none;
+}
+
+.filter-container::-webkit-scrollbar {
+    display: none;
+}
+
+.genre-chip {
+    padding: 8px 24px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--text-dim);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.genre-chip:hover,
+.genre-chip.active {
+    background: var(--neon-blue);
+    color: white;
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px rgba(10, 132, 255, 0.4);
+}
+
+.pagination-container {
+    margin-top: 50px;
+    padding: 30px 0;
+    border-top: 1px solid var(--glass-border);
+}
+
+.page-link {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: white !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 10px !important;
+    margin: 0 5px;
+    padding: 10px 20px;
+    transition: 0.3s;
+}
+
+.page-link:hover {
+    background: var(--neon-purple) !important;
+    color: white !important;
+}
+
+.page-item.active .page-link {
+    background: var(--neon-blue) !important;
+    border-color: var(--neon-blue) !important;
+}.video-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        /* Video Info Section */
+        .movie-detail-head { margin-top: 25px; }
+        
+        .action-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 12px;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .action-btn:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--neon-blue);
+            color: var(--neon-blue);
+        }
+
+        /* Sidebar Recommendations */
+        .next-card {
+            display: flex;
+            gap: 15px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 15px;
+            padding: 10px;
+            margin-bottom: 15px;
+            transition: 0.3s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .next-card:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: var(--glass-border);
+            transform: translateX(5px);
+        }
+
+        .next-card img {
+            width: 120px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .brand-text {
+            background: linear-gradient(to right, var(--neon-purple), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .back-nav {
+            margin-bottom: 20px;
+            display: inline-block;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .back-nav:hover { color: #fff; }
+
+        @media (max-width: 991px) {
+            .side-panel { margin-top: 40px; }
+        }

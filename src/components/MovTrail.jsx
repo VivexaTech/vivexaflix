@@ -1,14 +1,16 @@
 import { useGlobal } from "../MoviesData";
 import Trailer from "./Trailer";
+import { useParams } from "react-router-dom";
 
 export default function MovTrail() {
+  const {id} = useParams()
   const { movie, page, setPage, videoKeys } = useGlobal();
   console.log(movie)
 
   return (
     <>
       {movie.map((item) => {
-         if (item.id !== 83533) return null;
+         if (item.id !== Number(id)) return null;
          return(
         <div key={item.id}>
           <Trailer
@@ -18,6 +20,7 @@ export default function MovTrail() {
             id={videoKeys[item.id]}
             des = {item.overview}
             videoKey={videoKeys[item.id]}
+            
           />
         </div>)
       })}

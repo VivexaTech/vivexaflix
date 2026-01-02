@@ -1,76 +1,32 @@
-export default function Trailer({ videoKey, poster, title, des }) {
+export default function Trailer({ videoKey, poster, title, des, date }) {
   return (
-    <section className="trailer-section mb-5">
-      <div className="container-fluid p-3 p-md-5">
-
-        {/* Header
-        <div className="row mb-4">
-          <div className="col-12">
-            <span className="badge streaming-badge mb-2">Now Streaming</span>
-            <h1 className="movie-title text-white">{title}</h1>
-          </div>
-        </div> */}
-
-        <div className="row g-4 align-items-stretch">
-
-          {/* CARD 1: Poster + Description */}
-          <div className="col-xl-3 col-lg-4 d-none d-lg-block">
-            <div className="media-card h-100">
-
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${poster}`}
-                alt={title}
-                className="poster-img"
-              />
-
-              <div className="card-body-custom">
-                <p className="movie-description">
-                  {des}
-                </p>
-              </div>
-
-            </div>
-          </div>
-
-          {/* CARD 2: Trailer Video */}
-          <div className="col-xl-9 col-lg-8">
-            <div className="media-card h-100">
-
-              {/* Video */}
-              <div className="ratio ratio-16x9 video-frame">
-                <iframe
-                  src={`https://www.youtube.com/embed/${videoKey}?autoplay=1&mute=1&modestbranding=1&rel=0`}
-                  title="Trailer"
-                  allow="autoplay; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-
-              {/* Info */}
-              <div className="card-body-custom info-pane">
-                <div className="d-flex flex-wrap align-items-center gap-3 mb-3">
-                  <span className="match">98% Match</span>
-                  <span className="meta">2022</span>
-                  <span className="meta-box">TV-14</span>
-                  <span className="meta-box">HD</span>
+            <div class="col-lg-8">
+                <div class="video-container">
+                    <iframe width="100%" height="100%" 
+                        src={`https://www.youtube.com/embed/${videoKey}?autoplay=1`}
+                        title="Vivexa Player" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
 
-                <div className="d-flex flex-wrap gap-3">
-                  <button className="btn play-btn">▶ Play</button>
-                  <button className="btn more-btn">+ My List</button>
+                <div class="movie-detail-head">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+                        <div>
+                            <h2 class="fw-800 mb-1">{title}</h2>
+                            <p class="text-secondary">{date} • Action, Sci-Fi • 3h 2m • <span class="text-info">Ultra HD</span></p>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <a href="#" class="action-btn"><i class="bi bi-plus-lg"></i> My List</a>
+                            <a href="#" class="action-btn"><i class="bi bi-share"></i> Share</a>
+                            <a href="#" class="action-btn text-danger"><i class="bi bi-heart-fill"></i> 12k</a>
+                        </div>
+                    </div>
+                    <hr class="opacity-10 my-4"/>
+                    <h5 class="fw-bold mb-3">Storyline</h5>
+                    <p class="text-secondary opacity-75" style={{maxwidth: "800px", lineheight: "1.6"}}>{des}                    </p>
                 </div>
-
-                {/* Mobile Description */}
-                <p className="movie-description d-block d-lg-none mt-3">
-                  {des}
-                </p>
-
-              </div>
             </div>
-          </div>
 
-        </div>
-      </div>
-    </section>
   );
 }

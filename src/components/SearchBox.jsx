@@ -1,3 +1,5 @@
+import { useGlobal } from "../MoviesData"
+import { useState } from "react"
 export default function SearchBox() {
     return (
         <>
